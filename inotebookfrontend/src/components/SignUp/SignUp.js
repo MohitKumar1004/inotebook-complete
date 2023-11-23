@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export default function SignUp(props) {
+
+    const host = process.env.REACT_APP_SERVER_HOST
+
     const [credentials, setCredentials] = useState({email: '', password: '', cpassword: ''})
     
     let navigate = useNavigate()
@@ -12,11 +15,11 @@ export default function SignUp(props) {
 
         if(password!==cpassword)
         {
-            props.showAlert('Account Created Successfully','success')
+            props.showAlert('Passwords are different','danger')
             return;
         }
 
-        const response = await fetch(`http://localhost:5001/api/auth/createuser`,{
+        const response = await fetch(`${host}/api/auth/createuser`,{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -45,7 +48,7 @@ export default function SignUp(props) {
             <h2>Create an account to use iNoteBook</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
-                    <label htmlFor="name" className="form-label">Password</label>
+                    <label htmlFor="name" className="form-label">Name</label>
                     <input type="name" className="form-control" id="name" name="name" onChange={onChange}/>
                 </div>
                 <div className="mb-3">
