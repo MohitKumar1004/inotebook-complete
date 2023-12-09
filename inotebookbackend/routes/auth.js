@@ -18,17 +18,17 @@ router.post('/createuser',[
     body('password', 'Password must be of at least 6 characters').isLength({ min: 6 }),
     body('password', 'Password must be of at most 20 characters').isLength({ max: 20 })
 ], async(req,res)=>{
-
-    let success=false
-    
-    // If there are errors, return Bad request and the errors
-    const errors = validationResult(req)
-    if(!errors.isEmpty()){
-        success=false
-        return res.status(400).json({ success, errors: errors })
-    }
-
     try{
+
+        let success=false
+        
+        // If there are errors, return Bad request and the errors
+        const errors = validationResult(req)
+        if(!errors.isEmpty()){
+            success=false
+            return res.status(400).json({ success, errors: errors })
+        }
+    
         // Check whether the user with this email exists already
         let user = await User.findOne({ email: req.body.email })
         if(user){
@@ -69,18 +69,18 @@ router.post('/login', [
     body('password', 'Password is too short').isLength({min: 6}),
     body('password', 'Password is too long').isLength({max: 20})
 ], async (req,res)=>{
-
-    let success=false
-    // If there are errors, return Bad request and the errors
-    const errors = validationResult(req)
-    if(!errors.isEmpty()){
-        success=false
-        return res.status(400).json({ success, errors: errors.array() })
-    }
-
-    const {email,password} = req.body
-
     try{
+
+        let success=false
+        // If there are errors, return Bad request and the errors
+        const errors = validationResult(req)
+        if(!errors.isEmpty()){
+            success=false
+            return res.status(400).json({ success, errors: errors.array() })
+        }
+    
+        const {email,password} = req.body
+    
         // Check whether the user with this email exists already
         let user = await User.findOne({ email })
         if(!user){

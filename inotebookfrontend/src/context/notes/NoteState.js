@@ -15,7 +15,6 @@ const NoteState = (props) => {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
             'auth-token': localStorage.getItem('token')
         }
       })
@@ -30,7 +29,6 @@ const NoteState = (props) => {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'auth-token': localStorage.getItem('token')
           },
           body: JSON.stringify({title,description,tag})
@@ -46,7 +44,6 @@ const NoteState = (props) => {
           method: 'DELETE',
           headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
               'auth-token': localStorage.getItem('token')
           }
       })
@@ -64,7 +61,6 @@ const NoteState = (props) => {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
                 'auth-token': localStorage.getItem('token')
             },
             body: JSON.stringify({title: etitle, description: edescription, tag: etag})
