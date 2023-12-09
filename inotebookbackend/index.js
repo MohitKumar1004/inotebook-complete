@@ -8,6 +8,9 @@ const port = process.env.PORT
 connectToMongo();
 
 app.use(cors())
+app.use(cors({
+    
+}))
 // Available Routes
 app.get('/', (req, res) =>{
     res.send('Hello World')
