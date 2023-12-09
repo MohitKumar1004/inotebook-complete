@@ -14,7 +14,6 @@ router.get('/fetchallnotes', fetchuser, async (req,res) => {
     }
     catch(error){
         console.error(error.message);
-        let success=false
         res.status(500).json({ errors: "Internal Server Error" })
     }
 })
