@@ -59,6 +59,7 @@ router.post('/createuser',[
     catch(error){
         console.error(error.message);
         // res.status(500).send("Internal Server Error")
+        let success=false
         res.status(500).json({ success, errors: "Internal Server Error" })
     }
 })
@@ -110,8 +111,8 @@ router.post('/login', [
     }
     catch(error){
         console.error(error.message);
+        let success=false
         res.status(500).json({ success, errors: "Internal Server Error" })
-        // res.status(500).send("Internal Server Error")
     }
 })
 
@@ -125,7 +126,8 @@ router.post('/getuser', fetchuser, async (req, res) => {
     }
     catch(error){
         console.error(error.message)
-        res.status(500).send("Internal Server Error")
+        let success=false
+        res.status(500).json({ success, errors: "Internal Server Error" })
     }
 })
 
